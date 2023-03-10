@@ -9,6 +9,8 @@ export const registerUser = createAsyncThunk(
         "http://localhost:3000/auth/register",
         credentials
       );
+      localStorage.setItem("accessToken", response.data.accessToken);
+      localStorage.setItem("refreshToken", response.data.refreshToken);
       console.log(response);
       return response.data;
     } catch (error) {
@@ -58,6 +60,15 @@ export const userSlice = createSlice({
   extraReducers: (builder) => {
     // Add reducers for additional action types here, and handle loading state as needed
     builder.addCase(registerUser.fulfilled, (state, action) => {
+      // Add user to the state array
+      state.user = {
+        ...action.payload,
+        currencyFormat: action.payload.currencyFormat || "US Dollar $",
+        currency: action.payload.currencyFormat?.split(" ")[0] || "$",
+        totalMonthBudget: action.payload.TotalMonthBudget,
+      };
+    });
+    builder.addCase(loginUser.fulfilled, (state, action) => {
       // Add user to the state array
       state.user = {
         ...action.payload,

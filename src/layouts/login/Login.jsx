@@ -1,7 +1,6 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { redirect } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../redux/slices/userSlice";
 import { useNavigate } from "react-router-dom";
@@ -28,12 +27,9 @@ const Login = () => {
     await dispatch(loginUser(data));
     console.log(data);
     reset();
-    redirect("/home");
+    navigate("/home");
   }
 
-  // console.log(watch("email"));
-
-  // console.log(errors);
   return (
     <div className="flex items-center justify-center bg-orange1 min-h-screen w-full">
       <form
@@ -55,9 +51,7 @@ const Login = () => {
             id="email"
             placeholder="hey@chrisoncode.io"
             className={`block text-gray-800 w-full bg-transparent outline-none border-b-2 py-2 px-4 rounded-t  placeholder-gray-400 focus:bg-orange1 ${
-              errors.email
-                ? "text-red-300 border-red-500"
-                : "text-orange2 border-orange3"
+              errors.email ? " border-red-500" : " border-orange3"
             }`}
             {...register("email")}
           />
@@ -83,9 +77,7 @@ const Login = () => {
             id="password"
             placeholder="password"
             className={`block text-gray-800 w-full bg-transparent outline-none border-b-2 py-2 px-4 rounded-t  placeholder-gray-400 focus:bg-orange1 ${
-              errors.email
-                ? "text-red-300 border-red-500"
-                : "text-orange2 border-orange3"
+              errors.email ? " border-red-500" : " border-orange3"
             }`}
             {...register("password")}
           />

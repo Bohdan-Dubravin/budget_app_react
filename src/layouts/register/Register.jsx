@@ -56,9 +56,7 @@ const Register = () => {
             id="email"
             placeholder="hey@chrisoncode.io"
             className={`block text-gray-800 w-full bg-transparent outline-none border-b-2 py-2 px-4 rounded-t  placeholder-gray-400 focus:bg-orange1 ${
-              errors.email
-                ? "text-red-300 border-red-500"
-                : "text-orange2 border-orange3"
+              errors.email ? " border-red-500" : " border-orange3"
             }`}
             {...register("email")}
           />
@@ -84,9 +82,7 @@ const Register = () => {
             id="password"
             placeholder="password"
             className={`block text-gray-800 w-full bg-transparent outline-none border-b-2 py-2 px-4 rounded-t  placeholder-gray-400 focus:bg-orange1 ${
-              errors.email
-                ? "text-red-300 border-red-500"
-                : "text-orange2 border-orange3"
+              errors.email ? " border-red-500" : " border-orange3"
             }`}
             {...register("password")}
           />
